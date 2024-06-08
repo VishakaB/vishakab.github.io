@@ -23,7 +23,7 @@ jobs:
           node-version: '18.14.1'  # Adjust the Node.js version as needed
 
       - name: Setup pnpm
-        uses: pnpm/action-setup@v2
+        uses: pnpm/action-setup@v1
         with:
           version: 9.2.0  # Replace with the desired pnpm version
 
@@ -34,7 +34,7 @@ jobs:
         run: pnpm build
 
       - name: Upload build artifacts
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v4
         with:
           name: github-pages
           path: ./dist # Adjust this to the correct output directory of your build
