@@ -54,9 +54,6 @@ jobs:
         with:
           name: github-pages
           path: ./dist # Ensure this matches the path used in the upload step
-
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-        with:
-          folder: ./dist # Ensure this matches the path used in the download step
