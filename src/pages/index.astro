@@ -6,7 +6,6 @@ import createSlug from "../lib/createSlug"
 import TimeLineElement from "../components/cv/TimeLine.astro";
 
 const posts = (await getCollection("blog")).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
-
 const last_posts = posts.slice(0, 3);
 ---
 
@@ -16,9 +15,9 @@ const last_posts = posts.slice(0, 3);
     <div class="text-3xl font-bold">I'm Vishaka Basnayake</div>
     <div class="text-2xl py-1 font-bold">
       System and Software Architecture Design Researcher |
-      <span class="break-line"></span>
+      <br class="lg:hidden"> 
       Autonomous Driving Systems | University of Oulu
-  </div>
+    </div>
     <div class="py-2">
 
     </div>
@@ -45,7 +44,7 @@ const last_posts = posts.slice(0, 3);
   </div>
 
   <div class="mb-5">
-    <div class="text-2xl w-full font-bold">Education</div>
+    <div class="text-2xl w-full font-bold">Research Interests</div>
   </div>
 
   <div class="time-line-container grid gap-4 mb-10">
@@ -91,9 +90,10 @@ const last_posts = posts.slice(0, 3);
       </a>
     </div>
   </div>
-  <!-- <div>
-    <div class="text-3xl w-full font-bold mb-2">My last projects {"</>"}</div>
-  </div> -->
+
+  <div>
+    <div class="text-3xl w-full font-bold mb-2">Publications {"</>"}</div>
+  </div>
 
   <!-- <HorizontalCard
     title="Demo Project 1"
