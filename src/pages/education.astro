@@ -9,7 +9,21 @@ import TimeLineElement from "../components/cv/TimeLine.astro";
   <div>
     <div class="text-3xl w-full font-bold mb-5">Education and Training</div>
   </div>
-
+ 
+  <style>
+    .bold-underline {
+        font-weight: bold;
+        text-decoration: underline;
+    }
+    .contact-info {
+          font-size: 1rem; /* Equivalent to text-1xl */
+          width: 100%; /* Equivalent to w-full */
+          font-weight: bold; /* Equivalent to font-bold */
+      }
+    .italic {
+          font-style: italic; /* Correct property for italic text */
+      }
+  </style>
   <div class="time-line-container grid gap-4 mb-10">
     <TimeLineElement title="PhD - Thesis Title: Reliable 5G Emergency Wireless Communication Service">
       <p>
