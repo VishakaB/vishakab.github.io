@@ -1,104 +1,53 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import HorizontalCard from "../components/HorizontalCard.astro";
+import TimeLineElement from "../components/cv/TimeLine.astro";
+
 ---
 
-<BaseLayout title="Research" sideBarActiveItemID="research">
+<BaseLayout title = "teaching" sideBarActiveItemID="teaching">
   <div>
-    <div class="text-3xl w-full font-bold mb-5">Publications</div>
+    <div class="text-3xl w-full font-bold mb-5">Education and Training</div>
   </div>
-  <div class="mb-10 text-justify">
-    <HorizontalCard
-      title="Continuous and Responsive D2D Victim Localization for Post-Disaster Emergencies"
-      img="/tmc.png"
-      desc="Vishaka Basnayake; Hakim Mabed; Philippe Canalda; Dushantha Nalin K. Jayakody | Page(s): 1 - 16 | Date of Publication: 28 November 2023"    
-      url="https://ieeexplore.ieee.org/document/10330058"
-    />
-  </div>
-  <div class="mb-10 text-justify">
-    <HorizontalCard
-      title="Post-Disaster Victim Localization via D2D Communications"
-      img="/tmc.png"
-      desc="Vishaka Basnayake; Hakim Mabed; Philippe Canalda; Dushantha Nalin K. Jayakody | Page(s): 1 - 7 | Date of Publication: 05-08 September 2023"    
-      url="https://ieeexplore.ieee.org/document/10330058"
-    />
-  </div>
-  <div class="mb-10 text-justify">
-    <HorizontalCard
-      title="M-Ary QAM Asynchronous-NOMA D2D Network With Cyclic Triangular-SIC Decoding Scheme Published in: IEEE Access (Volume: 11)"
-      img="/mary.png"
-      desc="V. Basnayake, D. N. K.Jayakody, H. Mabed, A. Kumar, T. D. P. Perera | Page(s): 1 - 15 | Date of Publication: 16 January 2023"
-      url="https://ieeexplore.ieee.org/document/10018312"
-    />
-  </div>
+ 
+  <style>
+    .bold-underline {
+        font-weight: bold;
+        text-decoration: underline;
+    }
+    .contact-info {
+          font-size: 1rem; /* Equivalent to text-1xl */
+          width: 100%; /* Equivalent to w-full */
+          font-weight: bold; /* Equivalent to font-bold */
+      }
+    .italic {
+          font-style: italic; /* Correct property for italic text */
+      }
+  </style>
+  <div class="time-line-container grid gap-4 mb-10">
+    <TimeLineElement title="BSc in Electrical and Electronic Engineering">
+      <p>
+        University of Peradeniya, Sri Lanka [ 06/01/2014 – 17/10/2017 ] 
+        City: Peradeniya | Country: Sri Lanka
+      </p>
+    </TimeLineElement>
 
-<div class="mb-10 text-justify">
-  <HorizontalCard
-    title="Adaptive Emergency Call Service for Disaster Management"
-    img="/adaptive.png"
-    desc="V. Basnayake, H. Mabed, D. N. K. Jayakody, P. Canalda, and M. Beko | Page(s): 1 - 25 | Date of Publication: 29 November 2022"
-    url="https://ieeexplore.ieee.org/document/10018312"
-  />
+    <TimeLineElement title="MSc - Thesis Title: Federated Learning For Enhanced Sensor Reliability Of Automated Wireless Networks">
+      <p>
+        University of Oulu, Finland [ 01/01/2018 – 31/07/2019 ] | 
+        City: Oulu | Country: Finland | Website: 
+        <a href='http://dx.doi.org/10.13140/RG.2.2.36680.19201' target='_blank' class='bold-underline'>Thesis</a>
+      </p>
+    </TimeLineElement>
 
-  <div class="mb-10 text-justify">
-    <HorizontalCard
-      title="Enhanced Convex Hull based Clustering for High Population Density Avoidance under D2D Enabled Network"
-      img="/convexhull.png"
-      desc="Vishaka Basnayake; Hakim Mabed; Philippe Canalda; Dushantha Nalin K. Jayakody | Page(s): 1 - 7 | Date of Publication: 27-30 September 2021"
-      url="https://ieeexplore.ieee.org/document/9625054"
-    />
+    <TimeLineElement title="PhD - Thesis Title: Reliable 5G Emergency Wireless Communication Service">
+      <p>
+        Universite Bourgogne Franche Comte (UBFC) [ 24/10/2019 – 02/06/2023 ] | 
+        City: Montbeliard | Country: France | Website: 
+        <a href='https://theses.fr/2023UBFCD013' target='_blank' class='bold-underline'>Thesis</a>
+      </p>
+    </TimeLineElement>
   </div>
 
-  <div class="mb-10 text-justify">
-    <HorizontalCard
-      title="M-HELP - Multi-Hop Emergency Call Protocol in 5G"
-      img="/mhelp.png"
-      desc="Vishaka Basnayake; Hakim Mabed; Dushantha Nalin K. Jayakody; Philippe Canalda | Page(s): 1 - 7 | Date of Publication: 26 November 2020"
-      url="https://ieeexplore.ieee.org/document/9306713"
-    />
-  </div>
 
-  <div class="mb-10 text-justify">
-    <HorizontalCard
-      title="A New Green Prospective of Non-orthogonal Multiple Access (NOMA) for 5G"
-      img="/noma.png"
-      desc="Basnayake, V.; Jayakody, D.N.K.; Sharma, V.; Sharma, N.; Muthuchidambaranathan, P.; Mabed, H | Page(s): 1 - 32 |7 February 2020"
-      url="https://www.mdpi.com/2078-2489/11/2/89"
-    />
-  </div>
-</div>
-
-<div class="mb-10 text-justify">
-  <HorizontalCard
-    title="Optimization of Secure Emergency Call Services in Asynchronous-NOMA D2D Network"
-    img="/optimization.png"
-    desc="Vishaka Basnayake, Ambrish Kumar, Dushantha Nalin K Jayakody| Page(s): 1 - 2 |30 October 2022 "
-    url="https://www.mdpi.com/2078-2489/11/2/89"
-  />
-</div>
-
-
-
-  <!-- <div class="divider my-0"></div>
-  <HorizontalCard
-    title="Service 2"
-    img="/post_img.webp"
-    desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-    url="#"
-  />
-  <div class="divider my-0"></div>
-  <HorizontalCard
-    title="Service 3"
-    img="/post_img.webp"
-    desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-    url="#"
-    badge="NEW"
-  />
-  <div class="divider my-0"></div>
-  <HorizontalCard
-    title="Service 4"
-    img="/post_img.webp"
-    desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-    url="#"
-  /> -->
 </BaseLayout>
