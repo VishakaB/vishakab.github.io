@@ -36,7 +36,43 @@ const last_posts = posts.slice(0, 3);
       .italic {
             font-style: italic; /* Correct property for italic text */
         }
+        <style>
+    /* Base styles */
+    body {
+      font-family: Arial, sans-serif;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    /* Light theme */
+    .light-theme {
+      background-color: white;
+      color: black;
+    }
+
+    /* Dark theme */
+    .dark-theme {
+      background-color: #121212;
+      color: white;
+    }
+
+    /* Button styles */
+    .theme-toggle-btn {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .theme-toggle-btn:hover {
+      background-color: #0056b3;
+    }
     </style>
+    
     <div class="mb-5">
       <div class="text-xl py-1 italic">Contact Details</div>
     </div>
