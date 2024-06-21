@@ -113,11 +113,21 @@ const last_posts = posts.slice(0, 3);
       const currentTheme = localStorage.getItem("theme") || "light";
 
       // Apply the saved theme
-      themeContainer.classList.toggle("dark-theme", currentTheme === "dark");
+      if (currentTheme === "dark") {
+        themeContainer.classList.add("dark-theme");
+      } else {
+        themeContainer.classList.add("light-theme");
+      }
 
       themeToggleBtn.addEventListener("click", () => {
         const isDarkTheme = themeContainer.classList.toggle("dark-theme");
-        localStorage.setItem("theme", isDarkTheme ? "dark" : "light");
+        if (isDarkTheme) {
+          themeContainer.classList.remove("light-theme");
+          localStorage.setItem("theme", "dark");
+        } else {
+          themeContainer.classList.add("light-theme");
+          localStorage.setItem("theme", "light");
+        }
       });
     });
   </script>
