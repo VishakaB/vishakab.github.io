@@ -72,36 +72,7 @@ const last_posts = posts.slice(0, 3);
       background-color: #0056b3;
     }
     </style>
-    <body id="theme-container" class="light-theme"><script>
-      document.addEventListener("DOMContentLoaded", () => {
-        const themeToggleBtn = document.getElementById("theme-toggle");
-        const themeContainer = document.getElementById("theme-container");
-        const currentTheme = localStorage.getItem("theme") || "light";
-  
-        // Apply the saved theme
-        if (currentTheme === "dark") {
-          themeContainer.classList.add("dark-theme");
-          themeContainer.classList.remove("light-theme");
-        } else {
-          themeContainer.classList.add("light-theme");
-          themeContainer.classList.remove("dark-theme");
-        }
-  
-        themeToggleBtn.addEventListener("click", () => {
-          const isDarkTheme = themeContainer.classList.toggle("dark-theme");
-          if (isDarkTheme) {
-            themeContainer.classList.remove("light-theme");
-            localStorage.setItem("theme", "dark");
-          } else {
-            themeContainer.classList.add("light-theme");
-            localStorage.setItem("theme", "light");
-          }
-        });
-      });
-    </script>
-  </body>
-    <button class="theme-toggle-btn" id="theme-toggle">Toggle Theme</button>
-    
+        
     <div class="mb-5">
       <div class="text-xl py-1 italic">Contact Details</div>
     </div>
