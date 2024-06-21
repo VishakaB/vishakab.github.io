@@ -2,83 +2,104 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import HorizontalCard from "../components/HorizontalCard.astro";
 import { getCollection } from "astro:content";
-import createSlug from "../lib/createSlug";
+import createSlug from "../lib/createSlug"
 import TimeLineElement from "../components/cv/TimeLine.astro";
 
-const posts = (await getCollection("blog")).sort((a, b) => b.data.pubDate.valueOf() - a.data.pub
----
-
----
-import BaseLayout from "../layouts/BaseLayout.astro";
-import { getCollection } from "astro:content";
-import TimeLineElement from "../components/cv/TimeLine.astro";
+const posts = (await getCollection("blog")).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+const last_posts = posts.slice(0, 3);
 ---
 
 <BaseLayout sideBarActiveItemID="home">
-  <style>
-    :root {
-      --bg-color: white;
-      --text-color: black;
-      --link-color: blue;
-      --button-bg: #007bff;
-      --button-hover-bg: #0056b3;
-      --button-text: white;
-    }
+  <div class="pb-12 mt-5">
+    <!-- <div class="text-xl py-2 italic">Hey There 👋</div> -->
+    <div class="text-2xl w-full font-bold">Vishaka Basnayake</div>
+    <div class="text-1xl py-2 italic">
+      <a href="https://www.oulu.fi/en/news/university-oulus-project-combines-6g-technology-and-autonomous-cars" target="_blank" class="bold-underline">6GVisible</a> System & Software Architect
+    </div>
+    <div class="text-1xl py-2 italic">
+      Empirical Software Engineering in Software, Systems and Services | University of Oulu
+    </div>
+    <div class="py-2">
+   
+    </div>
 
-    .dark-theme {
-      --bg-color: #121212;
-      --text-color: white;
-      --link-color: lightblue;
-      --button-bg: #333;
-      --button-hover-bg: #555;
-      --button-text: white;
-    }
-
+    <style>
+      .bold-underline {
+          font-weight: bold;
+          text-decoration: underline;
+      }
+      .contact-info {
+            font-size: 1rem; /* Equivalent to text-1xl */
+            width: 100%; /* Equivalent to w-full */
+            font-weight: bold; /* Equivalent to font-bold */
+        }
+      .italic {
+            font-style: italic; /* Correct property for italic text */
+        }
+        <style>
+    /* Base styles */
     body {
       font-family: Arial, sans-serif;
-      background-color: var(--bg-color);
-      color: var(--text-color);
       transition: background-color 0.3s, color 0.3s;
     }
 
-    a {
-      color: var(--link-color);
+    /* Light theme */
+    .light-theme {
+      background-color: white;
+      color: black;
     }
 
+    /* Dark theme */
+    .dark-theme {
+      background-color: #121212;
+      color: white;
+    }
+
+    /* Button styles */
     .theme-toggle-btn {
       position: fixed;
       top: 10px;
       right: 10px;
       padding: 10px 20px;
-      background-color: var(--button-bg);
-      color: var(--button-text);
+      background-color: #007bff;
+      color: white;
       border: none;
       border-radius: 5px;
       cursor: pointer;
-      transition: background-color 0.3s;
     }
 
     .theme-toggle-btn:hover {
-      background-color: var(--button-hover-bg);
+      background-color: #0056b3;
     }
-
-    .bold-underline {
-      font-weight: bold;
-      text-decoration: underline;
-    }
-
-    .contact-info {
-      font-size: 1rem;
-      width: 100%;
-      font-weight: bold;
-    }
-
-    .italic {
-      font-style: italic;
-    }
-  </style>
+    </style>
+    <body id="theme-container" class="light-theme"><script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const themeToggleBtn = document.getElementById("theme-toggle");
+        const themeContainer = document.getElementById("theme-container");
+        const currentTheme = localStorage.getItem("theme") || "light";
   
-  <div id="theme-container">
+        // Apply the saved theme
+        if (currentTheme === "dark") {
+          themeContainer.classList.add("dark-theme");
+          themeContainer.classList.remove("light-theme");
+        } else {
+          themeContainer.classList.add("light-theme");
+          themeContainer.classList.remove("dark-theme");
+        }
+  
+        themeToggleBtn.addEventListener("click", () => {
+          const isDarkTheme = themeContainer.classList.toggle("dark-theme");
+          if (isDarkTheme) {
+            themeContainer.classList.remove("light-theme");
+            localStorage.setItem("theme", "dark");
+          } else {
+            themeContainer.classList.add("light-theme");
+            localStorage.setItem("theme", "light");
+          }
+        });
+      });
+    </script>
+  </body>
     <button class="theme-toggle-btn" id="theme-toggle">Toggle Theme</button>
     
     <div class="mb-5">
@@ -92,76 +113,133 @@ import TimeLineElement from "../components/cv/TimeLine.astro";
         Work Address: <a href="https://www.oulu.fi/en/university/faculties-and-units/faculty-information-technology-and-electrical-engineering/empirical-software-engineering-software-systems-and-services" target="_blank" class="bold-underline">Empirical Software Engineering in Software, Systems and Services, Faculty of Information Technology and Electrical Engineering, University of Oulu, Finland</a>
     </div>
 
-    <div class="mt-8">
-      <a class="btn" href="https://github.com/VishakaB/vishakab.github.io" target="_blank">Github</a>
-      <a class="btn" href="https://scholar.google.com/citations?user=W9Zq25MAAAAJ&hl=en" target="_blank"> Google Scholar</a>
-      <a class="btn" href="https://www.linkedin.com/in/vishakabasnayake" target="_blank"> LinkedIn</a>
-      <a class="btn" href="https://www.youtube.com/channel/UCP-gQKG5nroQ6dDIyZMs3kw" target="_blank"> Youtube</a>
-      <a class="btn" href="https://www.researchgate.net/profile/Vishaka-Basnayake" target="_blank">Researchgate</a>
-      <a class="btn" href="https://orcid.org/0000-0001-5354-1722" target="_blank">ORCID</a>
-    </div>
-
-    <div class="mb-5">
-      <div class="text-2xl w-full font-bold">Biography</div>
-    </div>
-
-    <div class="mb-10 text-justify">
-      Vishaka Basnayake is a Post-Doc Researcher at <a href="https://www.oulu.fi/en/university/faculties-and-units/faculty-information-technology-and-electrical-engineering/empirical-software-engineering-software-systems-and-services" target="_blank" class="bold-underline">Empirical Software Engineering in Software, Systems and Services Unit, University of Oulu, Finland</a>
-      which she joined in March 2024. Previously, she worked as a Lecturer at Sri Lanka Technological Campus (SLTC), Sri Lanka, from September 2022 to February 2024. 
-      She obtained her Ph.D. in Computer Science from <a href="https://www.femto-st.fr/en/Research-departments/DISC/Research-teams" target="_blank" class="bold-underline">Department of Distributed digital algorithms, mobile networks, distributed systems, verification and validation of software and embedded devices, Universite Bourgogne Franche Comte (UBFC)</a>, France, in June 2023, where she worked from 2020 to 2021. 
-      She continued her Ph.D. studies from 2022 to 2023 while teaching at SLTC. Prior to that, she completed her M.Sc. in Wireless Communications
-      Engineering at the <a href="https://www.oulu.fi/en/apply/masters-wireless-communications-engineering" target="_blank" class="bold-underline">Center for Wireless Communications Research, University of Oulu, Finland</a>, in 2019, and her B.Sc. in 
-      <a href="https://eng.pdn.ac.lk" target="_blank" class="bold-underline">Electrical and Electronic Engineering from Faculty of Engineering of University of Peradeniya, Sri Lanka,</a> in 2017.
-    </div>
-
-    <div class="py-2">
-      <!-- Add Downloadable CV Link Here -->
-      <a href="https://drive.google.com/file/d/1cf4Sw_-2U2HUrnF1Wn2zngqrPnmyX7ar/view?usp=sharing" download class="btn btn-primary">Download CV</a>
-    </div>
-
-    <div class="mb-5">
-      <div class="text-2xl w-full font-bold">Research Interests</div>
-    </div>
-
-    <div class="mb-10 text-justify">
-      Her research interests include:
-    </div>
-
-    <div class="time-line-container grid gap-4 mb-10"> 
-      <TimeLineElement
-        title="Multi-Agent based modelling"
-      />
-      <TimeLineElement
-        title="Automotive System and Software Architecture Design"
-      />
-      <TimeLineElement
-        title="Communication protocol and Localization Algorithm Design for wireless, mobile cooperative and connected systems"
-      />
-      <TimeLineElement
-        title="Optimization Techniques for Automotive Systems"
-      />
-      <TimeLineElement
-        title="Federated Learning for  Multi-Access Edge Computing"
-      />
-    </div>
+  <div class="mt-8">
+    <a class="btn" href="https://github.com/VishakaB/vishakab.github.io" target="_blank" class="btn btn-outline ml-5">Github</a>
+    <a class="btn" href="https://scholar.google.com/citations?user=W9Zq25MAAAAJ&hl=en" target="_blank"> Google Scholar</a>
+    <a class="btn" href="https://www.linkedin.com/in/vishakabasnayake" target="_blank"> LinkedIn</a>
+    <a class="btn" href="https://www.youtube.com/channel/UCP-gQKG5nroQ6dDIyZMs3kw" target="_blank"> Youtube</a>
+    <a class="btn" href="https://www.researchgate.net/profile/Vishaka-Basnayake" target="_blank" class="btn btn-outline ml-5">Researchgate</a>
+    <a class="btn" href="https://orcid.org/0000-0001-5354-1722" target="_blank" class="btn btn-outline ml-5">ORCID</a>
   </div>
 
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const themeToggleBtn = document.getElementById("theme-toggle");
-      const themeContainer = document.getElementById("theme-container");
-      const currentTheme = localStorage.getItem("theme") || "light";
+  <div class="py-3">
 
-      // Apply the saved theme
-      if (currentTheme === "dark") {
-        themeContainer.classList.add("dark-theme");
-      }
+  </div>
 
-      themeToggleBtn.addEventListener("click", () => {
-        themeContainer.classList.toggle("dark-theme");
-        const newTheme = themeContainer.classList.contains("dark-theme") ? "dark" : "light";
-        localStorage.setItem("theme", newTheme);
-      });
-    });
-  </script>
+  <div class="mb-5">
+    <div class="text-2xl w-full font-bold">Biography</div>
+  </div>
+
+  <div class="mb-10 text-justify">
+    Vishaka Basnayake is a Post-Doc Researcher at <a href="https://www.oulu.fi/en/university/faculties-and-units/faculty-information-technology-and-electrical-engineering/empirical-software-engineering-software-systems-and-services" target="_blank" class="bold-underline">Empirical Software Engineering in Software, Systems and Services Unit, University of Oulu, Finland</a>
+    which she joined in March 2024. Previously, she worked as a Lecturer at Sri Lanka Technological Campus (SLTC), Sri Lanka, from September 2022 to February 2024. 
+    She obtained her Ph.D. in Computer Science from <a href="https://www.femto-st.fr/en/Research-departments/DISC/Research-teams" target="_blank" class="bold-underline">Department of Distributed digital algorithms, mobile networks, distributed systems, verification and validation of software and embedded devices, Universite Bourgogne Franche Comte (UBFC)</a>, France, in June 2023, where she worked in from 2020 to 2021. 
+    She continued her Ph.D. studies from 2022 to 2023 while teaching in SLTC. Prior to that, she completed her M.Sc. in Wireless Communications
+    Engineering at the <a href="https://www.oulu.fi/en/apply/masters-wireless-communications-engineering" target="_blank" class="bold-underline">Center for Wireless Communications Research, University of Oulu, Finland</a>, in 2019, and her B.Sc. in 
+    <a href="https://eng.pdn.ac.lk" target="_blank" class="bold-underline">Electrical and Electronic Engineering from Faculty of Engineering of University of Peradeniya, Sri Lanka,</a> in 2017.
+  </div>
+  <div class="py-2">
+    <!-- Add Downloadable CV Link Here -->
+    <a href="https://drive.google.com/file/d/1cf4Sw_-2U2HUrnF1Wn2zngqrPnmyX7ar/view?usp=sharing" download class="btn btn-primary">Download CV</a>
+  </div>
+  <div class="mb-5">
+    <div class="text-2xl w-full font-bold">Research Interests</div>
+  </div>
+
+  <div class="mb-10 text-justify">
+    Her research interests include:
+  </div>
+
+  <div class="time-line-container grid gap-4 mb-10"> 
+    <TimeLineElement
+      title="Multi-Agent based modelling"
+    />
+    <TimeLineElement
+      title="Automotive System and Software Architecture Design"
+    />
+    <TimeLineElement
+      title="Communication protocol and Localization Algorithm Design for wireless, mobile cooperative and connected systems"
+    />
+    <TimeLineElement
+      title="Optimization Techniques for Automotive Systems"
+    />
+    <TimeLineElement
+      title="Federated Learning for  Multi-Access Edge Computing"
+    />
+  </div>
+
+  <!-- <div class="mb-5">
+    <div class="text-2xl w-full font-bold">Experience</div>
+  </div>
+
+  <div class="time-line-container mb-10">
+    <TimeLineElement
+      title="Job Title at Project or Company Name"
+      subtitle="From [Start Date] to [End Date] at [Company], [City], [Country]"
+    >
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.
+    </TimeLineElement>
+    <TimeLineElement
+      title="Job Title at Project or Company Name"
+      subtitle="From [Start Date] to [End Date] at [Company], [City], [Country]"
+    >
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.
+    </TimeLineElement>
+    <TimeLineElement
+      title="Job Title at Project or Company Name"
+      subtitle="From [Start Date] to [End Date] at [Company], [City], [Country]"
+    >
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.
+    </TimeLineElement>
+  </div>
+  
+
+  </div>
+
+  <div>
+    <div class="text-3xl w-full font-bold mb-2">Publications {"</>"}</div>
+  </div> -->
+
+  <!-- <HorizontalCard
+    title="Demo Project 1"
+    img="/post_img.webp"
+    desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+    url="#"
+    badge="NEW"
+  />
+  <div class="divider my-0"></div>
+  <HorizontalCard
+    title="Demo Project 2"
+    img="/post_img.webp"
+    desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+    url="#"
+  />
+  <div class="divider my-0"></div>
+  <HorizontalCard
+    title="Demo Project 3"
+    img="/post_img.webp"
+    desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+    url="#"
+    badge="FOSS"
+  />
+
+  <div>
+    <div class="text-3xl w-full font-bold mb-5 mt-10">Latest from blog</div>
+  </div>
+
+  {
+    last_posts.map((post) => (
+      <>
+        <HorizontalCard
+          title={post.data.title}
+          img={post.data.heroImage}
+          desc={post.data.description}
+          url={"/blog/" + createSlug(post.data.title, post.slug)}
+          target="_self"
+          badge={post.data.badge}
+        />
+        <div class="divider my-0" />
+      </>
+    ))
+  } -->
 </BaseLayout>
