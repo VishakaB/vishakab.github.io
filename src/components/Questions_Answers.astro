@@ -2,23 +2,11 @@
 const { question } = Astro.props;
 ---
 
-<div class="mb-5">
-  <div class="text-2xl w-full font-bold">Questions & Answers</div>
+<div class="mb-4">
+  <div class="font-bold">{question}</div>
+  <div class="italic text-justify">
+    <slot />
+  </div>
 </div>
 
-<div class="mb-10">
-  <QAItem question="What is your main research focus?">
-    My research focuses on software and system architecture design for autonomous
-    and connected systems, particularly using multi-agent based modelling and 5G/6G connectivity.
-  </QAItem>
-
-  <QAItem question="What domains do you primarily work in?">
-    I work at the intersection of software engineering, autonomous driving systems,
-    and next-generation wireless communication technologies.
-  </QAItem>
-
-  <QAItem question="Are you available for research collaborations?">
-    Yes, I am open to national and international research collaborations in both academia and industry.
-  </QAItem>
-</div>
 
